@@ -6,7 +6,7 @@ import { fileText } from 'react-icons-kit/icomoon/fileText'
 import { equalizer2 } from 'react-icons-kit/icomoon/equalizer2'
 import { ic_control_point  } from 'react-icons-kit/md/ic_control_point'
 
-import BottomNavigation from './BottomNavigation'
+import TabNavigation from './TabNavigation'
 
 const navigations = [
 	{
@@ -23,31 +23,32 @@ const navigations = [
 	},
 	{
 		text: 'New',
-		color: 'red',
 		icon: <Icon icon={ ic_control_point } />
 	}
 ]
 
-const iconNavigations = [
+const textNavigations = [
 	{
-		icon: <Icon icon={ home } />
+		text: 'Home',
 	},
 	{
-		icon: <Icon icon={ fileText } />
+		text: 'Transactions',
 	},
 	{
-		icon: <Icon icon={ equalizer2 } />
+		text: 'Settings',
 	},
 	{
-		color: 'red',
-		icon: <Icon icon={ ic_control_point } />
+		text: 'New',
 	}
 ]
 
-
-storiesOf('BottomNavigation', module)
-	.add('standard', () => <BottomNavigation navigations={ navigations } />)
-	.add('icon only', () => <BottomNavigation navigations={ iconNavigations } />)
-	.add('initial active index', () => <BottomNavigation navigations={ iconNavigations } activeIndex={0} />)
+storiesOf('TabNavigation', module)
+	.add('standard', () => 
+		<div>
+			<TabNavigation navigations={ navigations } /><br/>
+			<TabNavigation navigations={ textNavigations } /><br/>
+			<TabNavigation navigations={ textNavigations } activeIndex={0} /><br/>
+		</div>
+	)
 
 

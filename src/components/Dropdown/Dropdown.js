@@ -6,7 +6,7 @@ export default class Dropdown extends Component {
 		super(props)
 		this.state = {
 			isOpen: false,
-			selectedIndex: 0
+			selectedIndex: Number.isInteger(props.selectedIndex) ? props.selectedIndex : 0
 		}
 		this.toggle = this.toggle.bind(this)
 		this.handleItemClick = this.handleItemClick.bind(this)
@@ -144,6 +144,7 @@ const commons = {
 const styles = {
 	dropdown: {
 		background: '#fefefe',
+		borderBottom: '1px solid',
 		borderColor: '#f2f2f2',
 		boxSizing: 'border-box',
 		cursor: 'pointer',

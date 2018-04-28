@@ -8,7 +8,8 @@ const standardItems = ['First', 'Second', 'Third']
 
 storiesOf('Dropdown', module)
 	.add('standard', () => <Dropdown items={ standardItems } />)
+	.add('selected index defined', () => <Dropdown items={ standardItems } selectedIndex={2} />)
 	.add('with callback', () => 
 		<Dropdown 
 			items={ standardItems } 
-			onItemClick={(selectedItem) => alert(`You've selected '${ selectedItem }'`)} />)
+			onItemClick={(selectedIndex) => alert(`You've selected index: '${ selectedIndex }'`)} />)

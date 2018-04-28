@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Button from '../Button'
 
-export default class BottomNavigation extends Component {
+export default class TabNavigation extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -21,53 +21,59 @@ export default class BottomNavigation extends Component {
 
 	render() {
 		const { navigations } = this.props
-		const itemStyle = Object.assign(
-			{},
-			styles.navItem,
-			{ width: `${ 100 / navigations.length }%` }
-		)
 		return (
 			<div style={ styles.wrapper }>
 				{
-					navigations && navigations.map((nav, index) =>
-						<div key={ `btmNav-${ index }` } style={ itemStyle }>
-							<Button 
-								text={ nav.text } 
-								fill={ true }
-								color={ nav.color ? nav.color : 'default' }
-								focus={ index === this.state.activeIndex ? true : false }
-								icon={ nav.icon ? nav.icon : '' }
-								iconPosition='top'
-								onClick={ () => this.handleNavigationClick(index) }/>
-						</div>
-					)
+					navigations && navigations.map((nav, index) => { 
+						const itemStyle = Object.assign(
+							{},
+							styles.navItem,
+							{ width: `${ 100 / navigations.length }%` },
+							index === this.state.activeIndex ? styles.navItemFocus : {}
+						)
+						return (
+							<div key={ `tabNav-${ index }` } style={ itemStyle }>
+								<Button 
+									text={ nav.text } 
+									fill={ true }
+									focus={ index === this.state.activeIndex ? true : false }
+									icon={ nav.icon ? nav.icon : '' }
+									iconPosition='left'
+									onClick={ () => this.handleNavigationClick(index) }/>
+							</div>
+						)
+					})
 				}
 			</div>
 		)
 	}
 }
 
-BottomNavigation.propTypes = {
+TabNavigation.propTypes = {
 	navigations: PropTypes.arrayOf(PropTypes.object),
 	onNavigationClick: PropTypes.func
 }
 
-BottomNavigation.defaultProps = {
+TabNavigation.defaultProps = {
 	navigations: [],
 	onNavigationClick: function() {}
 }
 
 const styles = {
 	wrapper: {
-		bottom: 0,
-		height: '70px',
+		height: '40px',
 		boxSizing: 'border-box',
 		overflow: 'hidden',
-		position: 'fixed',	
+		position: 'relative',
 		width: '100%'
 	},
 	navItem: {
+		borderBottom: '1px solid',
+		borderColor: 'transparent',
 		float: 'left',
-		height: '100%'
+		height: '39px'
+	},
+	navItemFocus: {
+		borderColor: '#37B8D5'
 	}
 }

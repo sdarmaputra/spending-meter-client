@@ -82,7 +82,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-	text: 'Submit',
+	text: '',
 	onClick: function() {},
 	block: false,
 	fill: false,

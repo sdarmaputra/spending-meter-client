@@ -2,6 +2,8 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import TransactionList from './TransactionList'
+import withSectionTitle from '../utils/withSectionTitle'
+import withEmptyPlaceholder from '../utils/withEmptyPlaceholder'
 
 const transactions = [
 	{
@@ -32,8 +34,13 @@ const wrapper = (story) =>
 		{ story() }
 	</div>
 
+const TransactionListWithTitle = withSectionTitle(TransactionList, 'Transactions')
+const TransactionListWithEmpty = withSectionTitle(withEmptyPlaceholder(TransactionList, 'transactions'), 'Transactions')
+
 storiesOf('TransactionList', module)
 	.addDecorator(wrapper)
 	.add('standard', () => <TransactionList transactions={ transactions } />)
+	.add('with section title', () => <TransactionListWithTitle transactions={ transactions } />)
+	.add('with empty placeholder', () => <TransactionListWithEmpty />)
 
 
