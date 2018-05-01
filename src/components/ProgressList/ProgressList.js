@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import SummaryCard from '../SummaryCard'
 import ProgressBar from '../ProgressBar'
 
-const ProgressList = ({ progressSummaries }) => 
-	<div>
+const ProgressList = ({ progressSummaries, style }) => 
+	<div style={ style }>
 		{ 
 			progressSummaries && progressSummaries.map((progress, index) => {
 				const percentage = (progress.currentValue / progress.maxValue) * 100 
@@ -25,11 +25,13 @@ const ProgressList = ({ progressSummaries }) =>
 	</div>
 
 ProgressList.propTypes = {
-	progressSummaries: PropTypes.array
+	progressSummaries: PropTypes.array,
+	style: PropTypes.object
 }
 
 ProgressList.defaultProps = {
-	progressSummaries: []
+	progressSummaries: [],
+	style: {}
 }
 
 export default ProgressList

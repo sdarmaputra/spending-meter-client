@@ -59,11 +59,12 @@ TopBar.defaultProps = {
 
 const styles = {
 	wrapper: {
+		background: '#fff',
 		boxSizing: 'border-box',
 		height: '50px',
 		left: 0,
 		padding: '8px 16px',
-		position: 'fixed',
+		position: 'absolute',
 		top: 0,
 		width: '100%'
 	},

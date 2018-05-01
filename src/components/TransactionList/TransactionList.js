@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import SummaryCard from '../SummaryCard'
 
-const TransactionList = ({ transactions }) =>
-	<div>
+const TransactionList = ({ transactions, style }) =>
+	<div style={ style }>
 		{ 
 			transactions && transactions.map((transaction, index) =>
 				<SummaryCard
@@ -17,11 +17,13 @@ const TransactionList = ({ transactions }) =>
 	</div>
 
 TransactionList.propTypes = {
-	transactions: PropTypes.array
+	transactions: PropTypes.array,
+	style: PropTypes.object
 }
 
 TransactionList.defaultProps = {
-	transactions: []
+	transactions: [],
+	style: {}
 }
 
 export default TransactionList

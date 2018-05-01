@@ -63,7 +63,7 @@ const styles = {
 		height: '70px',
 		boxSizing: 'border-box',
 		overflow: 'hidden',
-		position: 'fixed',	
+		position: 'absolute',	
 		width: '100%'
 	},
 	navItem: {

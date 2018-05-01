@@ -150,7 +150,8 @@ const styles = {
 		cursor: 'pointer',
 		minHeight: commons.height,
 		position: 'absolute',
-		transition: 'background, box-shadow 0.15s ease-in'
+		transition: 'background, box-shadow 0.15s ease-in',
+		zIndex: 1
 	},
 	dropdownOpened: {
 		border: '1px solid #efefef',

@@ -20,15 +20,17 @@ export default class StatBox extends Component {
 	}
 
 	render() {
-		const { periods, stats, currency } = this.props
+		const { periods, stats, currency, style } = this.props
 		const periodList = periods.map(period => period.text)
 		const selectedStat = stats.reduce((result, current) => 
 			current.periodId === this.state.selectedPeriodIndex ? current : result
 		,	null)
-		console.log(this.state)
-		console.log(selectedStat)
+		let statBoxStyle = styles.statBox
+		if (typeof style === 'object') {
+			statBoxStyle = Object.assign({}, styles.statBox, style)
+		}
 		return (
-			<div style={ styles.statBox }>
+			<div style={ statBoxStyle }>
 				<div style={ styles.dropdown }>
 					<Dropdown 
 						block={ true }
@@ -53,13 +55,15 @@ export default class StatBox extends Component {
 StatBox.propTypes = {
 	periods: PropTypes.array,
 	stats: PropTypes.array,
-	currency: PropTypes.string
+	currency: PropTypes.string,
+	style: PropTypes.object
 }
 
 StatBox.defaultProps = {
 	periods: [],
 	stats: [],
-	currency: 'IDR'
+	currency: 'IDR',
+	style: {}
 }
 
 const styles = {
@@ -68,6 +72,7 @@ const styles = {
 		borderRadius: '5px',
 		boxSizing: 'border-box',
 		color: '#fff',
+		marginBottom: '16px',
 		overflow: 'hidden',
 		padding: '16px 0 0',
 		textAlign: 'center'
